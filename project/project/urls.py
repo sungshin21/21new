@@ -18,11 +18,26 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.urls import include 
+
 import main.views
+# from . import views
+from main import views
+from main.views import HomeView
+from main.views import UserCreateView, UserCreateDoneTV, UserChangeView, UserChangeDoneTV
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('main.urls')),
+
+    path('', HomeView.as_view(), name='home'),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/register/', UserCreateView.as_view(), name='register'),
+    path('accounts/register/done/', UserCreateDoneTV.as_view(), name='register_done'),
+    path('accounts/change/', UserChangeView.as_view(), name='change'),
+    path('accounts/change/done/', UserChangeDoneTV.as_view(), name='change_done'),
+
+
     path('서울/', main.views.seoul, name='서울'),
     path('경기/', main.views.gg, name='경기'),
     path('강원/', main.views.gw, name='강원'),
