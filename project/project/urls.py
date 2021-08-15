@@ -21,21 +21,10 @@ from django.urls import include
 
 import main.views
 # from . import views
-from main import views
-from main.views import HomeView
-from main.views import UserCreateView, UserCreateDoneTV, UserChangeView, UserChangeDoneTV
-
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('main.urls')),
-
-    path('', HomeView.as_view(), name='home'),
-    path('accounts/', include('django.contrib.auth.urls')),
-    path('accounts/register/', UserCreateView.as_view(), name='register'),
-    path('accounts/register/done/', UserCreateDoneTV.as_view(), name='register_done'),
-    path('accounts/change/', UserChangeView.as_view(), name='change'),
-    path('accounts/change/done/', UserChangeDoneTV.as_view(), name='change_done'),
 
 
     path('서울/', main.views.seoul, name='서울'),
@@ -70,6 +59,4 @@ urlpatterns = [
     path('충북/명소/', main.views.cb_p, name="충북명소"),
     path('충북/맛집/', main.views.cb_e, name="충북맛집"),
 
-    path('login/', main.views.login, name="로그인"),
-    path('signup/', main.views.signup, name="회원가입"),
 ]

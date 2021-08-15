@@ -20,20 +20,3 @@ body {
   #content .checkbox {
     font-weight: 400;
   }
-  
-  #content .form-floating:focus-within {
-    z-index: 2;
-  }
-  
-  #content input[type="email"] {
-    margin-bottom: -1px;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
-  }
-  
-  #content input[type="password"] {
-    margin-bottom: 10px;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-  }
-  

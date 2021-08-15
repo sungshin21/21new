@@ -5,7 +5,7 @@ from django.conf.urls import include
 from . import views
 from main import views
 from main.views import HomeView
-from main.views import UserCreateView, UserCreateDoneTV, UserChangeView, UserChangeDoneTV
+from main.views import UserCreateView, UserCreateDoneTV
 
 
 urlpatterns = [
@@ -21,7 +21,5 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/register/', UserCreateView.as_view(), name='register'),
     path('accounts/register/done/', UserCreateDoneTV.as_view(), name='register_done'),
-    path('accounts/change/', UserChangeView.as_view(), name='change'),
-    path('accounts/change/done/', UserChangeDoneTV.as_view(), name='change_done'),
 ]
 

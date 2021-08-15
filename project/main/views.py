@@ -1,11 +1,8 @@
-from django.shortcuts import render
-
 from django.views.generic.base import TemplateView
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
 
 # from main.forms import CustomUserChangeForm
 # from .models import Post
@@ -23,26 +20,6 @@ class UserCreateView(CreateView):
 
 class UserCreateDoneTV(TemplateView):
 	template_name = 'registration/register_done.html'
-
-class UserChangeView(UpdateView):
-	template_name = 'registration/change.html'
-	form_class = UserCreationForm
-	success_url = reverse_lazy('change_done')
-
-	def get(self, request, *args, **kwargs):
-		form = self.form_class(instance=request.user)
-		return render(request, self.template_name, {'form': form})
-
-	def post(self, request, *args, **kwargs):
-		form = self.form_class(request.POST, instance=request.user)
-		if form.is_valid():
-			form.save()
-			return HttpResponseRedirect(self.success_url)
-
-		return render(request, self.template_name, {'form': form})
-
-class UserChangeDoneTV(TemplateView):
-	template_name = 'registration/change_done.html'
 
 
 
@@ -140,9 +117,3 @@ def cb_p(request):
 
 def cb_e(request):
     return render(request, './충북/충북 맛집.html')
-
-def login(request):
-    return render(request, './로그인, 회원가입/로그인.html')
-
-def signup(request):
-    return render(request, './로그인, 회원가입/회원가입.html')
